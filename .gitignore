@@ -1,0 +1,17 @@
+# Environment secrets — never commit these
+.env
+.env.*
+!.env.example
+
+# Composer
+/vendor/
+composer.lock
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log

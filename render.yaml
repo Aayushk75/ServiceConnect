@@ -1,0 +1,19 @@
+# Render Blueprint — lets Render auto-create this web service from your repo.
+# Render's own managed database is PostgreSQL, not MySQL, so this blueprint
+# defines the WEB SERVICE only. For the database, use a free external MySQL
+# host (see DEPLOYMENT.md — Neon covers Postgres, not MySQL, so for MySQL
+# specifically we recommend Railway's MySQL plugin, Aiven's free tier, or
+# FreeDB.tech / db4free.net for a truly $0 option) and paste its connection
+# string into the DATABASE_URL environment variable below via the dashboard.
+
+services:
+  - type: web
+    name: serviceconnect
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false   # set this manually in the Render dashboard (secret)
