@@ -8,13 +8,13 @@ if (!is_logged_in() || $_SESSION['role'] !== 'mechanic') {
     exit;
 }
 
-$stmt = $pdo->prepare("SELECT is_verified FROM users WHERE id = ?");
+/*$stmt = $pdo->prepare("SELECT is_verified FROM users WHERE id = ?");
 $stmt->execute([$_SESSION['user_id']]);
 if (!$stmt->fetch()['is_verified']) {
     echo json_encode(['success' => false, 'message' => 'Your account is pending admin verification.']);
     exit;
 }
-
+*/
 $requestId = (int)($_POST['request_id'] ?? 0);
 
 // Atomic "first mechanic to accept wins" — the WHERE status='pending' clause
