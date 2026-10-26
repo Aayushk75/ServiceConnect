@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($errors)) {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         // Mechanics start unverified; admin must verify them (per Trust & Verification research insight)
-        $isVerified = ($role === 'mechanic') ? 0 : 1;
+        $isVerified = 1;
 
         $stmt = $pdo->prepare(
             "INSERT INTO users (name, email, password, phone, role, garage_name, specialization, is_verified)
